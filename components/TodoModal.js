@@ -7,6 +7,8 @@ class TodoModal extends React.Component {
 	}
 	submit() {
 		this.props.submit(this.state);
+		this.props.toggle();
+		this.setState({text: ""})
 	}
 	render() {
 		return (
@@ -23,9 +25,8 @@ class TodoModal extends React.Component {
 					</View>
 					<View style={{display: "flex", flexDirection: "row", justifyContent: "space-between", marginTop: 20}}>
 						<Button title="Add" onPress={this.submit.bind(this)} color="yellowgreen" />
-						<Button title="Cancel" onPress={this.props.toggle} color="red" />
+						<Button title="Cancel" onPress={e => this.props.toggle()} color="red" />
 					</View>
-					
 				</View>
 			</Modal>
 		);

@@ -69,6 +69,13 @@ class NewsList extends React.Component {
 NewsList.navigationOptions = {
 	title: "News", 
 	headerTitle: "News",
+	headerStyle: {
+    backgroundColor: '#f4097f',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: {
+    fontWeight: 'bold',
+  },
 	tabBarIcon: ({tintColor}) => <Image source={require("./../assets/newspaper.png")} style={[styles.icon, {tintColor: tintColor}]} />
 }
 

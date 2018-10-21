@@ -1,29 +1,12 @@
 import React from "react";
 import {ScrollView, ActivityIndicator, View, StyleSheet, Text, Picker} from "react-native";
 import { connect } from "react-redux";
-import {
-  fetchStart,
-  fetchEnd,
-  fetchError
-} from "./../store/ducks/info";
-import axios from "axios"; 
 import { Grid, XAxis, YAxis, LineChart, Path } from "react-native-svg-charts";
 import * as shape from "d3-shape";
 
 
 
 class Graph extends React.Component {
-	componentDidMount() {
-		this.props.dispatch(fetchStart());
-    const url = "https://ada-inserter.herokuapp.com/api/info";
-    axios.get(url) 
-      .then(response => {
-        const { status, data } = response.data;
-        if (status === true) {
-          this.props.dispatch(fetchEnd(data));
-        }
-      });
-	}
 	render() {
 		const verticalContentInset = {top: 10, bottom: 10};
 		const yaxisStyle = { marginBottom: 30 };
@@ -54,7 +37,7 @@ class Graph extends React.Component {
 						</Picker>
 						{Object.keys(this.props.info.graphData[this.props.info.currentCountry]).map(type => {
 							return Object.keys(this.props.info.graphData[this.props.info.currentCountry][type]).map((subtype, index) => {
-									return (<View style={{ height: 300, padding: 10, flexDirection: 'row', position: 'relative' }} key={index}>
+									return (<View style={{ height: 200, padding: 10, flexDirection: 'row', position: 'relative' }} key={index}>
 											<YAxis
 						              data={this.props.info.yAxis}
 						              style={{ marginBottom: 30 }}
